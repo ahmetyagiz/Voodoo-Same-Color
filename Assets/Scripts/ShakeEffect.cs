@@ -46,7 +46,7 @@ public class ShakeEffect : MonoBehaviour
                 capsule.transform.DOMoveY(1.5f, shakeDuration / 2).SetDelay(delay)
                     .OnComplete(() =>
                     {
-                        capsule.transform.DOMove(originalPosition, shakeDuration / 3);
+                        capsule.transform.DOMoveY(originalPosition.y, shakeDuration / 3);
                     });
 
                 // Rotasyonu þok etmek için DOShakeRotation kullanýyoruz
@@ -56,7 +56,7 @@ public class ShakeEffect : MonoBehaviour
         }
 
         // Tüm kapsüllerin hareketi tamamlanana kadar bekle
-        yield return new WaitForSeconds(shakeDuration + 0.5f);
+        yield return new WaitForSeconds(shakeDuration + 1f);
 
         isShaking = false;
     }
